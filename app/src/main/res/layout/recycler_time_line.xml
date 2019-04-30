@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_margin="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/timeFrom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"/>
+
+    <TextView
+        android:layout_margin="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:id="@+id/timeTo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <TextView
+        android:layout_margin="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@id/divider3"
+        android:layout_alignLeft="@id/divider"
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="1dp"
+        android:layout_height="70dp"
+        android:layout_alignRight="@id/timeFrom"
+        android:background="?android:attr/listDivider" />
+
+    <View
+        android:layout_alignLeft="@id/timeTo"
+        android:id="@+id/divider2"
+        android:layout_width="1dp"
+        android:layout_height="70dp"
+        android:background="?android:attr/listDivider" />
+
+    <TextView
+        android:layout_alignParentTop="true"
+        android:layout_margin="10dp"
+        android:layout_alignRight="@id/divider2"
+        android:id="@+id/room"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <View
+        android:layout_alignLeft="@id/room"
+        android:id="@+id/divider3"
+        android:layout_width="1dp"
+        android:layout_height="70dp"
+        android:background="?android:attr/listDivider" />
+</RelativeLayout>
