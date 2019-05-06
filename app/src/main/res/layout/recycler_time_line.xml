@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/dayweek">
 
     <TextView
         android:layout_margin="10dp"
@@ -26,8 +27,8 @@
     <TextView
         android:layout_margin="10dp"
         android:layout_alignParentTop="true"
-        android:layout_alignRight="@id/divider3"
         android:layout_alignLeft="@id/divider"
+        android:layout_alignRight="@+id/divider3"
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -51,15 +52,18 @@
         android:layout_alignParentTop="true"
         android:layout_margin="10dp"
         android:layout_alignRight="@id/divider2"
+        android:layout_alignLeft="@id/divider3"
         android:id="@+id/room"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView" />
-
     <View
-        android:layout_alignLeft="@id/room"
-        android:id="@+id/divider3"
+        android:background="?android:attr/listDivider"
         android:layout_width="1dp"
         android:layout_height="50dp"
-        android:background="?android:attr/listDivider" />
-</RelativeLayout>
+        android:layout_alignLeft="@+id/timeTo"
+        android:layout_marginLeft="-50dp"
+        android:id="@+id/divider3"
+        />
+
+    </RelativeLayout>

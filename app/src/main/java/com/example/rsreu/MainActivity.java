@@ -87,6 +87,7 @@ public class MainActivity extends AppCompatActivity implements RecycleViewAdapte
                 default:
                     day="Неделя";
             }
+            getTitleColor();
             return day;
         }
 
