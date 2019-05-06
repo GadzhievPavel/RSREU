@@ -1,6 +1,9 @@
 package com.example.rsreu.data;
 
 public class Answer {
+
+
+    private int weekDay;
    private String fromTime;
    private String toTime;
    private String title;
@@ -8,6 +11,13 @@ public class Answer {
    private String room;
    private String build;
 
+    public int getWeekDay() {
+        return weekDay;
+    }
+
+    public void setWeekDay(int weekDay) {
+        this.weekDay = weekDay;
+    }
     public String getFromTime() {
         return fromTime;
     }

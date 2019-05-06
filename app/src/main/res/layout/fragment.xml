@@ -1,22 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <TextView
-        android:layout_gravity="center_horizontal"
-        android:id="@+id/numOrDen"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Понедельник"
-        android:textSize="25dp"/>
+        android:text="Понедельник" />
+
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycle"
+        android:layout_below="@id/textView"
+        android:id="@+id/rec"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_below="@id/rec"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="top"/>
+        android:text="Вторник" />
 
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@id/textView1"
+        android:id="@+id/rec1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_below="@id/rec1"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Среда" />
 
-</LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@id/textView2"
+        android:id="@+id/rec2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_below="@id/rec2"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Четверг" />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@id/textView3"
+        android:id="@+id/rec3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_below="@id/rec3"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Пятница" />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@id/textView4"
+        android:id="@+id/rec4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_below="@id/rec4"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Суббота" />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@id/textView5"
+        android:id="@+id/rec5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

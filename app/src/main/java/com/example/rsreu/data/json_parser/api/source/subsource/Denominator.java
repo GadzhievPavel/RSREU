@@ -1,6 +1,6 @@
 package com.example.rsreu.data.json_parser.api.source.subsource;
 
-public class Denominator
+public class Denominator implements Week
 {
     //@SerializedName("weekDay")
     private int weekDay;

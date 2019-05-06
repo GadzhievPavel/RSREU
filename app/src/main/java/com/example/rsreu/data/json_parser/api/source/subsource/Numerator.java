@@ -1,6 +1,6 @@
 package com.example.rsreu.data.json_parser.api.source.subsource;
 
-public class Numerator {
+public class Numerator implements Week {
     private int weekDay;
 
     private int timeId;

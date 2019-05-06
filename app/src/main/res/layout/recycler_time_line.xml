@@ -36,7 +36,7 @@
     <View
         android:id="@+id/divider"
         android:layout_width="1dp"
-        android:layout_height="70dp"
+        android:layout_height="50dp"
         android:layout_alignRight="@id/timeFrom"
         android:background="?android:attr/listDivider" />
 
@@ -44,7 +44,7 @@
         android:layout_alignLeft="@id/timeTo"
         android:id="@+id/divider2"
         android:layout_width="1dp"
-        android:layout_height="70dp"
+        android:layout_height="50dp"
         android:background="?android:attr/listDivider" />
 
     <TextView
@@ -60,6 +60,6 @@
         android:layout_alignLeft="@id/room"
         android:id="@+id/divider3"
         android:layout_width="1dp"
-        android:layout_height="70dp"
+        android:layout_height="50dp"
         android:background="?android:attr/listDivider" />
 </RelativeLayout>

@@ -1,6 +1,5 @@
 package com.example.rsreu;
 
-import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -23,84 +22,91 @@ import com.example.rsreu.util.AnswerMaker;
 import com.example.rsreu.util.MySQLquery;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
-public class MainActivity extends AppCompatActivity implements MyRecyclerViewAdapter.ItemClickListener {
-    TextView textView;
+public class MainActivity extends AppCompatActivity implements RecycleViewAdapter.ItemClickListener {
+    private static final String TAG ="MAIN" ;
     private DatabaseHelper databaseHelper;
     private SQLiteDatabase db;
     private MySQLquery mySQLquery;
-    private ArrayList<Settings> settings= new ArrayList<>();
-    private ArrayList<Times>times=new ArrayList<>();
-    static final int PAGE_COUNT = 1;
+    private ArrayList<Settings> settings = new ArrayList<>();
+    private ArrayList<Times> times = new ArrayList<>();
+    static final int PAGE_COUNT = 2;
 
-    private ArrayList<Denominator>denominators=new ArrayList<>();
-    private ArrayList<Numerator>numerators=new ArrayList<>();
-    private TextView textView1;
+    //private ArrayList<Denominator> denominators = new ArrayList<>();
+    //private ArrayList<Numerator> numerators = new ArrayList<>();
+    private ArrayList<ArrayList<Numerator>> listsNummerator;
+    private ArrayList<ArrayList<Denominator>> listsDenominator;
 
     ViewPager pager;
     PagerAdapter pagerAdapter;
     AnswerMaker answerMaker;
-    ArrayList<Answer> answer;
+    Map<Integer, ArrayList<ArrayList<Answer>>> answer = new HashMap<Integer, ArrayList<ArrayList<Answer>>>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         databaseHelper = new DatabaseHelper(this);
         mySQLquery = new MySQLquery(databaseHelper);
-        settings=mySQLquery.getSettings();
-        times=mySQLquery.getTimes();
+        settings = mySQLquery.getSettings();
+        times = mySQLquery.getTimes();
 
-        numerators=mySQLquery.getNumerators("540",1,"20.02");
-        denominators=mySQLquery.getDenominators("633",3,"20.02");
+        Log.e("times 8",times.get(8).getFrom());
 
-        Log.e("Nun",numerators.get(0).getTitle());
-        answerMaker=new AnswerMaker(settings,times);
-        answer=answerMaker.getAnswersN(numerators);
+        listsNummerator=mySQLquery.getNumeratorAll("540","20.02");
+        listsDenominator=mySQLquery.getDenominatorAll("543","27.02");
+        Log.e("f", String.valueOf(listsNummerator.get(1).get(0).getWeekDay()));
+
+        answerMaker = new AnswerMaker(settings, times);
+        answer = answerMaker.getAnswers(listsNummerator,listsDenominator);
+        Log.e(TAG, String.valueOf(answer.get(1).get(1).get(0).getBuild()));
+
         pager=findViewById(R.id.pager);
-        pagerAdapter=new MyFragmentPagerAdapter(getSupportFragmentManager(),this,answer);
+        pagerAdapter=new MyFragmentPagerAdapter(getSupportFragmentManager());
         pager.setAdapter(pagerAdapter);
-        pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int i, float v, int i1) {
-
-            }
-
-            @Override
-            public void onPageSelected(int i) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int i) {
-
-            }
-        });
-    }
-
-    @Override
-    public void onItemClick(View view, int position) {
 
     }
 
     private class MyFragmentPagerAdapter extends FragmentPagerAdapter {
-        private ArrayList<Answer> answers;
-        private Context context;
-        public MyFragmentPagerAdapter(FragmentManager fm, Context context, ArrayList<Answer> answers) {
+
+        public MyFragmentPagerAdapter(FragmentManager fm) {
             super(fm);
-            this.answers=answers;
-            this.context=context;
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            String day;
+            switch (position){
+                case 0:
+                    day="Числитель";
+                    break;
+                case 1:
+                    day="Знаменатель";
+                    break;
+                default:
+                    day="Неделя";
+            }
+            return day;
         }
 
         @Override
         public Fragment getItem(int position) {
-            return PageFragment.newInstance(position,context,answers);
+            notifyDataSetChanged();
+            PageFragment.week=answer.get(position);
+            Log.e("POSITION", String.valueOf(position));
+            return PageFragment.newInstance(position);
         }
 
         @Override
         public int getCount() {
+            Log.e("GETCOUNT", String.valueOf(PAGE_COUNT));
             return PAGE_COUNT;
         }
 
     }
+    @Override
+    public void onItemClick(View view, int position) {
 
+    }
 }
